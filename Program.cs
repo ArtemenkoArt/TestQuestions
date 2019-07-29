@@ -8,9 +8,11 @@ namespace _012_TestQuestions
     class Program
     {
         //
-        public static List<Question> GetQuestion()
+        //public static List<Question> GetQuestion()
+        public static Dictionary<string, List<Question>> GetQuestion()
         {
-            List<Question> questions = new List<Question>();
+            Dictionary<string, List<Question>> dictQuestions = new Dictionary<string, List<Question>>();
+            //List<Question> questions = new List<Question>();
 
             string[] lines = File.ReadAllLines("Questions.txt");
             string category = "";
@@ -23,15 +25,18 @@ namespace _012_TestQuestions
                 if (line.IndexOf("<") >-1 && line.IndexOf(">") >-1)
                 {
                     category = line.Replace("<", "").Replace(">", "");
+                    dictQuestions.Add(category, new List<Question>());
                     continue;
                 }
                 else
                 {
-                    questions.Add(new Question { Category = category, QuestionText = line });
+                    dictQuestions[category].Add(new Question { Category = category, QuestionText = line });
+                    //questions.Add(new Question { Category = category, QuestionText = line });
                 }
                 //Console.WriteLine(line);
             }
-            return questions;
+            //return questions;
+            return dictQuestions;
         }
 
         //
@@ -61,22 +66,50 @@ namespace _012_TestQuestions
             return students;
         }
 
-        //
-        public static List<Question> SetQuestionsToStudent(List<Question> questions, List<Student> students)
+        ////
+        //public static List<Question> SetQuestionsToStudent(List<Question> questions, List<Student> students)
+        //{
+        //    List<Question> questionsWithStudents = new List<Question>();
+        //    while (questions.Count != 0)
+        //    {
+        //        foreach (var student in students)
+        //        {
+        //            var currentQuestion = questions[rnd.GetRandom(0, questions.Count)];
+        //            currentQuestion.Student = student;
+        //            questionsWithStudents.Add(currentQuestion);
+        //            questions.Remove(currentQuestion);
+        //            if (questions.Count == 0)
+        //            {
+        //                break;
+        //            }
+        //        }
+        //    }
+        //    return questionsWithStudents;
+        //}
+
+        // random choise in each category
+        public static List<Question> SetDictQuestionsToStudent(Dictionary<string, List<Question>> dictQuestions, List<Student> students)
         {
             List<Question> questionsWithStudents = new List<Question>();
-            while (questions.Count != 0)
+
+            while (dictQuestions.Count != 0)
             {
                 foreach (var student in students)
                 {
-                    var currentQuestion = questions[rnd.GetRandom(0, questions.Count)];
-                    currentQuestion.Student = student;
-                    questionsWithStudents.Add(currentQuestion);
-                    questions.Remove(currentQuestion);
-                    if (questions.Count == 0)
+                    if (dictQuestions.Keys.Count != 0)
                     {
-                        break;
-                    }
+                        var nameKey = dictQuestions.Keys.First();
+                        var currentQuestion = dictQuestions[nameKey][rnd.GetRandom(0, dictQuestions[nameKey].Count)];
+                        currentQuestion.Student = student;
+                        var count = questionsWithStudents.Where(s => s.Student == student).Count()+1;
+                        currentQuestion.QuestionText = count+" "+currentQuestion.QuestionText;
+                        questionsWithStudents.Add(currentQuestion);
+                        dictQuestions[nameKey].Remove(currentQuestion);
+                        if (dictQuestions[nameKey].Count == 0)
+                        {
+                            dictQuestions.Remove(nameKey);
+                        }
+                    }  
                 }
             }
             return questionsWithStudents;
@@ -85,10 +118,11 @@ namespace _012_TestQuestions
         //
         static void Main(string[] args)
         {
-            List<Question> questionsWithStudents = SetQuestionsToStudent(GetQuestion(), GetStudents());
+            List<Question> questionsWithStudents = SetDictQuestionsToStudent(GetQuestion(), GetStudents());
             IEnumerable<Question> sortedQuestions = questionsWithStudents.OrderBy(i => i.Student);
 
             WriteToFile(sortedQuestions);
+            Console.WriteLine("Ok!");
             Console.ReadKey();
         }
     }
