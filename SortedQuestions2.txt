@@ -1,0 +1,19 @@
+Artem 	 NET Section MVC and Web API : 	 1 - What HTML helper's do you know? What can HTML helper's be used for?
+Artem 	 NET Section MVC and Web API : 	 2 - What is the status code? What is the status code used for?
+Artem 	 NET Section MVC and Web API : 	 3 - On the first page, you filled in 10 fields, then you went to a new page. You need to use the information from these 10 fields on the new page. How to transfer information between two requests? Give the maximum of options?
+Artem 	 NET Section MVC and Web API : 	 4 - Why use HTML helper's? Can you do without them?
+Ivan 	 NET Section MVC and Web API : 	 1 - What is routing? Where can you add routes?
+Ivan 	 NET Section MVC and Web API : 	 2 - How to ensure field validation in MVC? How to provide server validation in MVC?
+Ivan 	 NET Section MVC and Web API : 	 3 - What is ChildAction?
+Ivan 	 NET Section MVC and Web API : 	 4 - Why use layered architecture?
+Vitaliy 	 NET Section MVC and Web API : 	 1 - What filters in MVC do you know? What can they be used for? Give examples of the use of filters.
+Vitaliy 	 NET Section MVC and Web API : 	 2 - What is the RESTFULL API?
+Vitaliy 	 NET Section MVC and Web API : 	 3 - What is a PartialView? What is PartialView used for?
+Vitaliy 	 NET Section MVC and Web API : 	 4 - What is MVC Pipline? Describe what is happening with the request as detailed as possible.
+Vlad 	 NET Section MVC and Web API : 	 1 - What is MVC? draw a diagram?
+Vlad 	 NET Section MVC and Web API : 	 2 - What types of queries do you know?
+Vlad 	 NET Section MVC and Web API : 	 3 - What is section?
+Yaroslav 	 NET Section MVC and Web API : 	 1 - What is Razor?
+Yaroslav 	 NET Section MVC and Web API : 	 2 - What is a Viewbag?
+Yaroslav 	 NET Section MVC and Web API : 	 3 - What is WebApi? Give some examples.
+Yaroslav 	 NET Section MVC and Web API : 	 4 - What is model binding?

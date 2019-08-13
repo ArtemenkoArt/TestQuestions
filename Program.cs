@@ -14,7 +14,7 @@ namespace _012_TestQuestions
             Dictionary<string, List<Question>> dictQuestions = new Dictionary<string, List<Question>>();
             //List<Question> questions = new List<Question>();
 
-            string[] lines = File.ReadAllLines("Questions.txt");
+            string[] lines = File.ReadAllLines("Questions2.txt");
             string category = "";
             foreach (string line in lines)
             {
@@ -42,7 +42,7 @@ namespace _012_TestQuestions
         //
         public static void WriteToFile(IEnumerable<Question> questions)
         {
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine("SortedQuestions.txt")))
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine("SortedQuestions2.txt")))
             {
                 foreach (Question item in questions)
                 {
